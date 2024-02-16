@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <Navigation />
       <div className="main-bg"></div>
-      <Product product={productData}/>
+      <Card product={productData} />
     </div>
   );
 }
@@ -25,7 +25,8 @@ const Navigation = () => {
           <Navbar.Brand href="#home">ShoseMall</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Cart</Nav.Link>
+            <Nav.Link href="#cart">Cart</Nav.Link>
+            <Nav.Link href="#event">Event</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -34,26 +35,23 @@ const Navigation = () => {
 }
 
 // Main page product
-const Product = (props) => {
+const Card = (props) => {
   return(
     <div>
       <Container>
         <Row>
-          <Col sm={4}>
-            <img src={ props.product[0].img } width="100%" />
-            <h4>{ props.product[0].title }</h4>
-            <p>{ props.product[0].content }</p>
-          </Col>
-          <Col sm={4}>
-            <img src={ props.product[1].img } width="100%" />
-            <h4>{ props.product[1].title }</h4>
-            <p>{ props.product[1].content }</p>
-          </Col>
-          <Col sm={4}>
-            <img src={ props.product[2].img } width="100%" />
-            <h4>{ props.product[2].title }</h4>
-            <p>{ props.product[2].content }</p>
-          </Col>
+          {
+            props.product.map((product, i) =>{
+              return(
+                <Col sm={4}>
+                  <img src={ product.img } width="100%" />
+                  <h4>{ product.title }</h4>
+                  <p>{ product.content }</p>
+                  <p>Price : { product.price }</p>
+                </Col>
+              )
+            })
+          }
         </Row>
       </Container>
     </div>
