@@ -3,9 +3,9 @@
 import './App.css';
 import { useState } from 'react';
 import { Container, Row, Col, Nav, Navbar, Button } from 'react-bootstrap';
-import productData from "./TestData.js";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 
+import productData from './Test-Data.js';
 import Detail from './routes/Detail.js';
 
 function App() {
@@ -18,38 +18,56 @@ function App() {
       <Navigation />
 
       <Routes>
-        <Route  path="/" element={
-          <div>
-            <div className="main-bg"></div>
-            <Card product={productData} />      
-          </div>
-        } />
 
-        <Route  path="/detail" element={<Detail />} />
+        <Route  path="/" element={ <Home productData/> } />
+
+        <Route  path="/detail" element={ <Detail /> } />
+
+        {/* Nested route 
+            - 여러 유사 페이지가 필요할 때 사용
+          */}
+        <Route path="/event" element={ <Event /> } >
+          <Route path="detail" element={<div>이벤트 디테일</div>} />
+        </Route>
+
       </Routes>
       
-      <Footer />
+      {/* <Footer /> */}
 
     </div>
     
   );
 }
+const Home = () => {
+  return(
+    <div>
+      <div className="main-bg"></div>
+      <Card product={productData} />  
+    </div>
+  )
+}
+
+const Event = () => {
+  return(
+    <div>
+      <h4>진행중인 이벤트</h4>
+      <Outlet />
+    </div>
+  )
+}
 
 // Navigation
 const Navigation = () => {
+  let navigate = useNavigate();
   return(
     <div>
       <Navbar bg="light" data-bs-theme="light">
         <Container>
           <Navbar.Brand href="/">ShoseMall</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#cart">Cart</Nav.Link>
-            <Nav.Link href="#event">Event</Nav.Link>
+            <Nav.Link onClick={()=>{ navigate('/cart') }}>Cart</Nav.Link>
+            <Nav.Link onClick={()=> { navigate('/event') }}>Event</Nav.Link>
           </Nav>
-          <div>
-
-          </div>
         </Container>
       </Navbar>
     </div>
