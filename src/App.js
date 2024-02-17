@@ -3,8 +3,10 @@
 import './App.css';
 import { useState } from 'react';
 import { Container, Row, Col, Nav, Navbar, Button } from 'react-bootstrap';
-import productData from "./data.js";
+import productData from "./TestData.js";
 import { Routes, Route, Link } from "react-router-dom";
+
+import Detail from './routes/Detail.js';
 
 function App() {
 
@@ -23,8 +25,11 @@ function App() {
           </div>
         } />
 
-        <Route  path="/detail" element={<div>상세페이지</div>} />
+        <Route  path="/detail" element={<Detail />} />
       </Routes>
+      
+      <Footer />
+
     </div>
     
   );
@@ -36,12 +41,15 @@ const Navigation = () => {
     <div>
       <Navbar bg="light" data-bs-theme="light">
         <Container>
-          <Navbar.Brand href="#home">ShoseMall</Navbar.Brand>
+          <Navbar.Brand href="/">ShoseMall</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#cart">Cart</Nav.Link>
             <Nav.Link href="#event">Event</Nav.Link>
           </Nav>
+          <div>
+
+          </div>
         </Container>
       </Navbar>
     </div>
@@ -68,6 +76,16 @@ const Card = (props) => {
           }
         </Row>
       </Container>
+    </div>
+  )
+}
+
+const Footer = () => {
+  return(
+    <div>
+      <footer className='footer'>
+        
+      </footer>
     </div>
   )
 }
