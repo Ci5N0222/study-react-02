@@ -3,3 +3,10 @@
 ## React Bootstrap
 ### https://react-bootstrap.netlify.app/
 ### `npm install react-bootstrap bootstrap`
+
+## React Router
+### `npm install react-router-dom@6`
+### Use React Router
+### index.js
+### `import { BrowserRouter } from "react-router-dom";`
+### `<BrowserRouter> <App /> </BrowserRouter>`

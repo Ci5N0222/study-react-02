@@ -4,6 +4,7 @@ import './App.css';
 import { useState } from 'react';
 import { Container, Row, Col, Nav, Navbar, Button } from 'react-bootstrap';
 import productData from "./data.js";
+import { Routes, Route, Link } from "react-router-dom";
 
 function App() {
 
@@ -11,10 +12,21 @@ function App() {
 
   return (
     <div className="App">
+
       <Navigation />
-      <div className="main-bg"></div>
-      <Card product={productData} />
+
+      <Routes>
+        <Route  path="/" element={
+          <div>
+            <div className="main-bg"></div>
+            <Card product={productData} />      
+          </div>
+        } />
+
+        <Route  path="/detail" element={<div>상세페이지</div>} />
+      </Routes>
     </div>
+    
   );
 }
 
