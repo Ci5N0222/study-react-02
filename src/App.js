@@ -23,7 +23,7 @@ function App() {
 
         <Route  path="/" element={ <Home productData/> } />
 
-        <Route  path="/detail" element={ <Detail shoes={ shoes }/> } />
+        <Route  path="/shoes/:id" element={ <Detail shoes={ shoes }/> } />
 
         {/* Nested route 
             - 여러 유사 페이지가 필요할 때 사용
