@@ -3,10 +3,12 @@
 import './App.css';
 import { useState } from 'react';
 import { Container, Row, Col, Nav, Navbar, Button } from 'react-bootstrap';
-import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 
 import productData from './Test-Data.js';
 import Detail from './routes/Detail.js';
+import Cart from './routes/Cart.js';
+import Event from './routes/Event.js';
 
 function App() {
 
@@ -27,7 +29,11 @@ function App() {
             - 여러 유사 페이지가 필요할 때 사용
           */}
         <Route path="/event" element={ <Event /> } >
-          <Route path="detail" element={<div>이벤트 디테일</div>} />
+          <Route path="detail" element={<div>Event Detail</div>} />
+        </Route>
+
+        <Route path="/cart" element={ <Cart /> } >
+          <Route path="detail" element={<div>Cart Detail</div>} />
         </Route>
 
       </Routes>
@@ -38,20 +44,12 @@ function App() {
     
   );
 }
+
 const Home = () => {
   return(
     <div>
       <div className="main-bg"></div>
       <Card product={productData} />  
-    </div>
-  )
-}
-
-const Event = () => {
-  return(
-    <div>
-      <h4>진행중인 이벤트</h4>
-      <Outlet />
     </div>
   )
 }
