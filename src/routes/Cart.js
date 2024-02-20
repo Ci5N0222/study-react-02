@@ -1,6 +1,11 @@
 import { Table } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 
 const Cart = () => {
+
+  let state = useSelector((state)=> state)
+  console.log(state.cart);
+
   return(
     <div>
       <h4>Cart List</h4>
