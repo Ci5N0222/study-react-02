@@ -35,6 +35,10 @@ function App() {
                 }
               </Row>
             </Container>
+            {
+             // 더보기 버튼
+              count < 4 ? <PlusButton shoes={shoes} setShoes={setShoes} count={count} setCount={setCount}/> : null
+            }
           </div>
         } />
 
@@ -52,10 +56,7 @@ function App() {
 
       </Routes>
 
-      {
-        // 더보기 버튼
-        count < 4 ? <PlusButton shoes={shoes} setShoes={setShoes} count={count} setCount={setCount}/> : null
-      }
+
       
       {/* <Footer /> */}
 

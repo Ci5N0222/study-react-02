@@ -1,6 +1,7 @@
 /* eslint-disable */
 
 import React, { useEffect, useState } from "react";
+import { Nav } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 // 옛날 방식
@@ -25,14 +26,7 @@ import { useParams } from "react-router-dom";
 
 const Detail = (props) => {
 
-    let [count, setCount] = useState(0);
-    let [num, setNum] = useState('');
-
-    useEffect(()=> {
-        if(isNaN(num) == true){
-            alert("숫자만 입력하세요.")
-        }
-    }, [num]);
+    let [tab, setTab] = useState(0);
 
     let {id} = useParams();
     let findId = props.shoes.find((x)=> x.id == id );
@@ -41,7 +35,7 @@ const Detail = (props) => {
         <div className="container">
             <div className="row">
                 <div className="col-md-6">
-                    <img src={ "https://codingapple1.github.io/shop/shoes"+{id}+".jpg" } width="100%"/>
+                    <img src={ "https://codingapple1.github.io/shop/shoes"+ (findId.id+1) +".jpg" } width="100%"/>
                 </div>
                 <div className="col-md-6 mt-4">
                     <h4 className="pt-5">{ findId.title }</h4>
@@ -50,8 +44,44 @@ const Detail = (props) => {
                     <button className="btn btn-danger">주문하기</button>
                 </div>
             </div>
+
+            <Nav variant="tabs" defaultActiveKey="link0">
+                <Nav.Item>
+                    <Nav.Link onClick={()=>{ setTab(0) }} eventKey="link0">버튼0</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                    <Nav.Link onClick={()=>{ setTab(1) }} eventKey="link1">버튼1</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                    <Nav.Link onClick={()=>{ setTab(2) }} eventKey="link2">버튼2</Nav.Link>
+                </Nav.Item>
+            </Nav>
+        
+            <TabContent tab={ tab } />
+
+        </div>
+    )
+   
+}
+
+const TabContent = ({tab}) => {
+    
+    // if(tab == 0){
+    //     return (<div>내용0</div>)
+    // } else if(tab == 1){
+    //     return (<div>내용1</div>)
+    // } else if(tab == 2) {
+    //     return (<div>내용2</div>)
+    // }
+
+    return(
+        <div>
+            {
+               [ <div>내용0</div>, <div>내용1</div>, <div>내용2</div> ][tab]
+            }
         </div>
     )
 }
+
 
 export default Detail;
