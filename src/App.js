@@ -4,6 +4,7 @@ import './App.css';
 import { useState } from 'react';
 import { Container, Row, Col, Nav, Navbar, Button } from 'react-bootstrap';
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 import productData from './Test-Data.js';
 import Detail from './routes/Detail.js';
@@ -12,7 +13,8 @@ import Event from './routes/Event.js';
 
 function App() {
 
-  let [shoes] = useState(productData);
+  let [shoes, setShoes] = useState(productData);
+  let [count, setCount] = useState(2);
 
   return (
     <div className="App">
@@ -21,10 +23,22 @@ function App() {
 
       <Routes>
 
-        <Route  path="/" element={ <Home productData/> } />
+        <Route  path="/" element={ 
+          <div>
+            <div className="main-bg"></div>
+            <Container>
+              <Row>
+                {
+                  shoes.map((a, i)=> {
+                    return(<Card shoes={shoes[i]} i={i} key={i}/>)
+                  })
+                }
+              </Row>
+            </Container>
+          </div>
+        } />
 
         <Route  path="/shoes/:id" element={ <Detail shoes={ shoes }/> } />
-
         {/* Nested route 
             - 여러 유사 페이지가 필요할 때 사용
           */}
@@ -37,6 +51,11 @@ function App() {
         </Route>
 
       </Routes>
+
+      {
+        // 더보기 버튼
+        count < 4 ? <PlusButton shoes={shoes} setShoes={setShoes} count={count} setCount={setCount}/> : null
+      }
       
       {/* <Footer /> */}
 
@@ -45,12 +64,21 @@ function App() {
   );
 }
 
-const Home = () => {
+const PlusButton = (props) => {
   return(
-    <div>
-      <div className="main-bg"></div>
-      <Card product={productData} />  
-    </div>
+    <button onClick={()=> {
+      // 로딩 시작
+      axios.get("https://codingapple1.github.io/shop/data"+props.count+".json")
+      .then((data)=>{
+        let copy = [...props.shoes, ...data.data];
+        props.setShoes(copy);
+        props.setCount(props.count+1);
+        // 로딩 종료
+      })
+      .catch(()=> {
+        // 로딩 종료 및 오류
+      })
+    }}>더보기</button>
   )
 }
 
@@ -75,24 +103,12 @@ const Navigation = () => {
 // Main page product
 const Card = (props) => {
   return(
-    <div>
-      <Container>
-        <Row>
-          {
-            props.product.map((product, i) =>{
-              return(
-                <Col sm={4}>
-                  <img src={ product.img } width="100%" />
-                  <h4>{ product.title }</h4>
-                  <p>{ product.content }</p>
-                  <p>Price : { product.price }</p>
-                </Col>
-              )
-            })
-          }
-        </Row>
-      </Container>
-    </div>
+    <Col sm={4}>
+      <img src={ "https://codingapple1.github.io/shop/shoes"+(props.i+1)+".jpg" } width="100%" />
+      <h4>{ props.shoes.title }</h4>
+      <p>{ props.shoes.content }</p>
+      <p>Price : { props.shoes.price }</p>
+    </Col>
   )
 }
 
