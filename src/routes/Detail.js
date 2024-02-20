@@ -57,7 +57,7 @@ const Detail = (props) => {
                 </Nav.Item>
             </Nav>
         
-            <TabContent tab={ tab } />
+            <TabContent shoes={ findId } tab={ tab } />
 
         </div>
     )
@@ -74,8 +74,20 @@ const TabContent = ({tab}) => {
     //     return (<div>내용2</div>)
     // }
 
+    let [fade, setFade] = useState('');
+
+    useEffect(()=> {
+        let timer = setTimeout(()=> {
+            setFade("end");
+        }, 100)
+        return () => {
+            clearTimeout(timer);
+            setFade("");
+        }
+    }, [tab])
+
     return(
-        <div>
+        <div className={"start " + fade}>
             {
                [ <div>내용0</div>, <div>내용1</div>, <div>내용2</div> ][tab]
             }
