@@ -10,3 +10,6 @@
 ### index.js
 ### `import { BrowserRouter } from "react-router-dom";`
 ### `<BrowserRouter> <App /> </BrowserRouter>`
+
+## Redux
+### `npm install @reduxjs/toolkit react-redux;`
