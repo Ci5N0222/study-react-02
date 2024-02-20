@@ -7,16 +7,19 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 let user = createSlice({
     name: 'user',
-    initialState: 'Kim',
+    initialState: { name: "Kim", age: 20 },
     reducers: {
         // state update function
         changName(state){
             return 'John ' + state;
+        },
+        changAge(state, num){
+            state.age += num.payload;
         }
     }
 })
 
-export let { changName } = user.actions
+export let { changName, changAge } = user.actions
 
 let cart = createSlice({
     name : 'cart',
