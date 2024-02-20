@@ -70,7 +70,7 @@ function App() {
 
 const PlusButton = (props) => {
   return(
-    <button onClick={()=> {
+    <Button onClick={()=> {
       // 로딩 시작
       axios.get("https://codingapple1.github.io/shop/data"+props.count+".json")
       .then((data)=>{
@@ -82,7 +82,7 @@ const PlusButton = (props) => {
       .catch(()=> {
         // 로딩 종료 및 오류
       })
-    }}>더보기</button>
+    }}>더보기</Button>
   )
 }
 

@@ -1,5 +1,10 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
+/**
+ * Redux를 쓰는 이유
+ * 컴포넌트 간 state 공유가 편해진다.
+ */
+
 let user = createSlice({
     name: 'user',
     initialState: 'Kim',
