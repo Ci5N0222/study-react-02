@@ -4,7 +4,9 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import { Container, Row, Col, Nav, Navbar, Button } from 'react-bootstrap';
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
+
 import axios from 'axios';
+import { useQuery } from 'react-query';
 
 import productData from './Test-Data.js';
 import Detail from './routes/Detail.js';
@@ -21,6 +23,13 @@ function App() {
       localStorage.setItem('watched', JSON.stringify([]));
     }
   }, [])
+  
+  // let result = useQuery('name', ()=>{
+  //   return axios.get('https://codingapple1.github.io/userdata.json').then((a)=>{
+  //     console.log("요청됨")
+  //     return a.data
+  //   })
+  // })
 
   return (
     <div className="App">
@@ -104,7 +113,7 @@ const Navigation = () => {
             <Nav.Link onClick={()=> { navigate('/event') }}>Event</Nav.Link>
           </Nav>
           <Nav className='me-auto ft-s'>
-            안녕하세요.
+            <p>안녕하세요</p>
           </Nav>
         </Container>
       </Navbar>
