@@ -33,6 +33,22 @@ const Detail = (props) => {
     let [tab, setTab] = useState(0);
     let {id} = useParams();
     let findId = props.shoes.find((x)=> x.id == id );
+    
+    useEffect(()=>{
+        if(!localStorage.getItem('watched')){
+            localStorage.setItem('watched', JSON.stringify([]));
+        }
+        let watched = JSON.parse(localStorage.getItem('watched'));
+        for (const index of watched) {
+            console.log(index);
+            if(index == findId.id){
+                watched.pop(index);
+                break;
+            }
+        }
+        watched.push(findId.id);
+        localStorage.setItem('watched', JSON.stringify(watched));
+    })
 
     return(
         <div className="container">
@@ -45,7 +61,7 @@ const Detail = (props) => {
                     <p>{ findId.content }</p>
                     <p>{ findId.price }원</p>
                     <Button onClick={()=>{
-                        dispatch(addItem(findId))
+                        dispatch(addItem({id: findId.id, name: findId.title, count : 1},))
                     }}>주문하기</Button>
                 </div>
             </div>

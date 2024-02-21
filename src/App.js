@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Container, Row, Col, Nav, Navbar, Button } from 'react-bootstrap';
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
@@ -15,7 +15,12 @@ function App() {
 
   let [shoes, setShoes] = useState(productData);
   let [count, setCount] = useState(2);
-  let [amount] = useState([10, 11, 12]);
+
+  useEffect(()=>{
+    if(!localStorage.getItem('watched')){
+      localStorage.setItem('watched', JSON.stringify([]));
+    }
+  })
 
   return (
     <div className="App">
