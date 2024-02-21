@@ -108,4 +108,29 @@ Destructuring 문법 :
         * let data2 = [...data1];
         * data1 != data2
         - data1에 있는 자료의 관호를 벗긴 후 다시 array로 만들었을 경우 화살표가 달라진다.
-        - 화살표가 다른 독립적인 array 복사본을 생성할 수 있다.    
+        - 화살표가 다른 독립적인 array 복사본을 생성할 수 있다.
+
+
+# React basic 5 (Component)
+1. fragment 문법 : <> ..HTML 태그.. </>
+2. Component : HTML을 한 단어로 치환해서 사용할 수 있는 문법 (HTML 덩어리)
+    - function을 이용하여 함수를 만들고 return(<div></div>) 작성
+    - Component를 적용할 곳에 <함수명></함수명> 또는 <함수명 /> 이런식으로 적용한다.
+3. 주의점
+    - component 작명 시 첫글자를 대문자로 작명한다. (<Modal />)
+    - return() 안에 HTML 태그들이 평행하게 여러개 들어갈 수 없다.
+    - function App(){} 내부에서 만들지 않는다.
+        - function App(){} 자체가 컴포넌트 생성 문법이다.
+    - component 안에 component를 만들지 않는다
+    - <Compnent></Component> 또는 <Component /> 이런식으로 적용한다.
+4. Arrow function
+    - function 함수명(){}
+    - const 함수명 = () => {}
+5. When Component
+    - 사이트에 반복해서 출현하는 HTML 덩어리
+    - 내용이 매우 자주 변경될 것 같은 HTML 덩어리
+    - 다른 페이지를 만들고 싶다면 그 페이지의 HTML 내용을 하나의 덩어리로 만든다.
+    - 다른 팀원과 협업할 때 웹페이지를 Component 단위로 나워서 작업을 분배한다.
+
+6. 단점
+    - HTML을 깔끔하게 만드려고 Component를 너무 많이 만들면 관리하기가 힘들다.
