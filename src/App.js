@@ -20,7 +20,7 @@ function App() {
     if(!localStorage.getItem('watched')){
       localStorage.setItem('watched', JSON.stringify([]));
     }
-  })
+  }, [])
 
   return (
     <div className="App">
@@ -36,7 +36,7 @@ function App() {
               <Row>
                 {
                   shoes.map((a, i)=> {
-                    return(<Card shoes={shoes[i]} i={i} key={i}/>)
+                    return( <Card shoes={shoes[i]} i={i} key={i}/> )
                   })
                 }
               </Row>
@@ -113,7 +113,9 @@ const Navigation = () => {
 const Card = (props) => {
   return(
     <Col sm={4}>
-      <img src={ "https://codingapple1.github.io/shop/shoes"+(props.i+1)+".jpg" } width="100%" />
+      <Link to={`/shoes/${props.shoes.id}`}>
+        <img src={ "https://codingapple1.github.io/shop/shoes"+(props.i+1)+".jpg" } width="100%" />
+      </Link>
       <h4>{ props.shoes.title }</h4>
       <p>{ props.shoes.content }</p>
       <p>Price : { props.shoes.price }</p>

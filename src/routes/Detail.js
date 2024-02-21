@@ -39,16 +39,11 @@ const Detail = (props) => {
             localStorage.setItem('watched', JSON.stringify([]));
         }
         let watched = JSON.parse(localStorage.getItem('watched'));
-        for (const index of watched) {
-            console.log(index);
-            if(index == findId.id){
-                watched.pop(index);
-                break;
-            }
-        }
         watched.push(findId.id);
+        watched = new Set(watched);
+        watched = Array.from(watched);
         localStorage.setItem('watched', JSON.stringify(watched));
-    })
+    }, [])
 
     return(
         <div className="container">

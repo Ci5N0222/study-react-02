@@ -12,4 +12,10 @@
 ### `<BrowserRouter> <App /> </BrowserRouter>`
 
 ## Redux
-### `npm install @reduxjs/toolkit react-redux;`
+### `npm install @reduxjs/toolkit react-redux`
+
+## Axios
+### `npm install axios`
+
+## React Query
+### `npm install react-query`
