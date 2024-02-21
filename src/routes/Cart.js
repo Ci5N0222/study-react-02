@@ -1,10 +1,13 @@
 import { Table, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCount, deleteItem } from './../store.js';
+import { memo, useState } from 'react';
+
 const Cart = () => {
 
   let state = useSelector((state)=> state)
   let dispatch = useDispatch();
+  let [count, setCount] = useState(0);
 
   return(
     <div>

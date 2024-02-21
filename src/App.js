@@ -10,8 +10,10 @@ import { useQuery } from 'react-query';
 
 import productData from './Test-Data.js';
 import Detail from './routes/Detail.js';
+// const Detail = lazy(()=> import('./routes/Detail.js'));
 import Cart from './routes/Cart.js';
 import Event from './routes/Event.js';
+
 
 function App() {
 
