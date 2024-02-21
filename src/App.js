@@ -103,6 +103,9 @@ const Navigation = () => {
             <Nav.Link onClick={()=>{ navigate('/cart') }}>Cart</Nav.Link>
             <Nav.Link onClick={()=> { navigate('/event') }}>Event</Nav.Link>
           </Nav>
+          <Nav className='me-auto ft-s'>
+            안녕하세요.
+          </Nav>
         </Container>
       </Navbar>
     </div>

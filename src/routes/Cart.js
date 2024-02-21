@@ -1,6 +1,5 @@
 import { Table, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { changName, changAge } from './../store/userSlice.js';
 import { addCount, deleteItem } from './../store.js';
 const Cart = () => {
 
