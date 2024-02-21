@@ -78,4 +78,34 @@ Destructuring 문법 :
 
 
 # React basic 4 (Set state Array,Object)
-
+1. array, object를 다룰 때 원본 데이터를 보존하는 것이 좋다.
+2. 예시 :
+    let [array, setArray] = [1, 2, 3, 4, 5];
+    <Button onClick={()=>{
+        let copy = [...array];
+        // copy[변경할 index] = '변경할 값';
+        copy[0] = 2;
+        setArray(copy);
+        // array 결과 값 : [2, 2, 3, 4, 5];
+    }}> arrayUpdate</Button>
+3. state 변경 함수 동작원리
+    - state 변경함수를 사용할 때 (기존state === 신규state)를 먼저 검사한다.
+    - 기존과 신규가 같으면 state를 업데이트하지 않는다.
+4. array/object 동작원리
+    - 자바스크립트는 array/object 자료를 만들면 RAM에 저장된다.
+    - 만들어진 자료는 RAM에 저장된 자료를 가리키는 화살표만 담겨있다.
+        예시 : let array = [1, 2, 3]
+        * array는 RAM에 저장된 [1, 2, 3]의 array데이터를 직접 가지는 것이 아닌 
+        * 가리키는 화살표만 담기게 된다.
+    - array/object 자료를 복사하면 같은 값을 각각 가지고 있는 것이 아니고 같은 데이터를 가리키는 화살표이기 때문에 원본 데이터를 바꾸면 복사된 데이터도 바뀌게 된다.
+        * let data1 = [1, 2, 3];
+        * let data2 = data1;
+5. Shallow copy, Deep copy [...array]
+    - spread operator
+    - array/object 자료형 왼쪽에 붙일 수 있으며, 괄호를 제거하는 문법이다.
+    예시 :
+        * let data1 = [1, 2, 3];
+        * let data2 = [...data1];
+        * data1 != data2
+        - data1에 있는 자료의 관호를 벗긴 후 다시 array로 만들었을 경우 화살표가 달라진다.
+        - 화살표가 다른 독립적인 array 복사본을 생성할 수 있다.    
