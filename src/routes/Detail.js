@@ -1,8 +1,11 @@
 /* eslint-disable */
 
 import React, { useContext, useEffect, useState } from "react";
-import { Nav } from "react-bootstrap";
+import { Button, Nav } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux"; 
+
+import { addItem } from "./../store.js";
 
 // 옛날 방식
 // class Detail2 extends React.Component {
@@ -26,8 +29,8 @@ import { useParams } from "react-router-dom";
 
 const Detail = (props) => {
 
+    let dispatch = useDispatch();
     let [tab, setTab] = useState(0);
-
     let {id} = useParams();
     let findId = props.shoes.find((x)=> x.id == id );
 
@@ -41,7 +44,9 @@ const Detail = (props) => {
                     <h4 className="pt-5">{ findId.title }</h4>
                     <p>{ findId.content }</p>
                     <p>{ findId.price }원</p>
-                    <button className="btn btn-danger">주문하기</button>
+                    <Button onClick={()=>{
+                        dispatch(addItem(findId))
+                    }}>주문하기</Button>
                 </div>
             </div>
 
