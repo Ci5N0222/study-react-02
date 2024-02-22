@@ -10,7 +10,6 @@ import { useQuery } from 'react-query';
 
 import productData from './Test-Data.js';
 import Detail from './routes/Detail.js';
-// const Detail = lazy(()=> import('./routes/Detail.js'));
 import Cart from './routes/Cart.js';
 import Event from './routes/Event.js';
 
@@ -26,13 +25,6 @@ function App() {
     }
   }, [])
   
-  // let result = useQuery('name', ()=>{
-  //   return axios.get('https://codingapple1.github.io/userdata.json').then((a)=>{
-  //     console.log("요청됨")
-  //     return a.data
-  //   })
-  // })
-
   return (
     <div className="App">
 
@@ -77,7 +69,7 @@ function App() {
 
 
       
-      {/* <Footer /> */}
+      <Footer className='footer' />
 
     </div>
     
@@ -110,12 +102,11 @@ const Navigation = () => {
       <Navbar bg="light" data-bs-theme="light">
         <Container>
           <Navbar.Brand href="/">ShoseMall</Navbar.Brand>
-          <Nav className="me-auto">
+          <Nav className="me-auto nav-menu">
             <Nav.Link onClick={()=>{ navigate('/cart') }}>Cart</Nav.Link>
             <Nav.Link onClick={()=> { navigate('/event') }}>Event</Nav.Link>
           </Nav>
           <Nav className='me-auto ft-s'>
-            <p>안녕하세요</p>
           </Nav>
         </Container>
       </Navbar>

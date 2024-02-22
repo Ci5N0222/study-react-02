@@ -7,26 +7,6 @@ import { useDispatch } from "react-redux";
 
 import { addItem } from "./../store.js";
 
-// 옛날 방식
-// class Detail2 extends React.Component {
-//     componentDidMount() {
-//         // 컴포넌트 mount 시 여기 코드 실행
-//     }
-//     componentDidUpdate() {
-//         // 컴포넌트 update 시 여기 코드 실행
-//     }
-//     componentWillUnmount() {
-//         // 컴포넌트 unmount 시 여기 코드 실행
-//     }
-// }
-
-/**
- * 컴포넌트의 Lifecycle (컴포넌트의 인생주기를 비유)
- * 페이지에 추가 : mount
- * 업데이트 : update
- * 페이지 제거 : unmount
- */ 
-
 const Detail = (props) => {
 
     let dispatch = useDispatch();

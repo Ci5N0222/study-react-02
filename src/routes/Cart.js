@@ -12,13 +12,7 @@ const Cart = () => {
   return(
     <div>
       <h4>Cart List</h4>
-
       { state.user.name }({ state.user.age })'s Cart List
-      {/* <div>
-        <Button onClick={()=>{
-          dispatch(changAge(1));
-        }}>age update button</Button>
-      </div> */}
       <Table style={{margin:"15px"}}>
         <thead>
           <tr>
