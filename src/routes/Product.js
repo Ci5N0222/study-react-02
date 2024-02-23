@@ -3,7 +3,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import {Nav} from 'react-bootstrap';
 
-import Card from 'App.js'
 
 const Product = (props) => {
 
