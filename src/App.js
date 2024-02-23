@@ -29,45 +29,47 @@ function App() {
     <div className="App">
 
       <Navigation />
+      <body className='main-container'>
+        <Routes>
+          <Route  path="/" element={ 
+            <div>
+              <div className="main-bg"></div>
+              <Container>
+                <Row>
+                  {
+                    shoes.map((a, i)=> {
+                      return( <Card shoes={shoes[i]} i={i} key={i}/> )
+                    })
+                  }
+                </Row>
+              </Container>
+              {
+              // 더보기 버튼
+                count < 4 ? <PlusButton shoes={shoes} setShoes={setShoes} count={count} setCount={setCount}/> : null
+              }
+            </div>
+          } />
 
-      <Routes>
+          <Route  path="/shoes/:id" element={ 
+              <Detail shoes={ shoes }/> 
+          } />
+          {/* Nested route 
+              - 여러 유사 페이지가 필요할 때 사용
+            */}
+          <Route path="/event" element={ <Event /> } >
+            <Route path="detail" element={<div>Event Detail</div>} />
+          </Route>
 
-        <Route  path="/" element={ 
-          <div>
-            <div className="main-bg"></div>
-            <Container>
-              <Row>
-                {
-                  shoes.map((a, i)=> {
-                    return( <Card shoes={shoes[i]} i={i} key={i}/> )
-                  })
-                }
-              </Row>
-            </Container>
-            {
-             // 더보기 버튼
-              count < 4 ? <PlusButton shoes={shoes} setShoes={setShoes} count={count} setCount={setCount}/> : null
-            }
-          </div>
-        } />
+          <Route path="/cart" element={ <Cart /> } >
+            <Route path="detail" element={<div>Cart Detail</div>} />
+          </Route>
 
-        <Route  path="/shoes/:id" element={ 
-            <Detail shoes={ shoes }/> 
-        } />
-        {/* Nested route 
-            - 여러 유사 페이지가 필요할 때 사용
-          */}
-        <Route path="/event" element={ <Event /> } >
-          <Route path="detail" element={<div>Event Detail</div>} />
-        </Route>
+        </Routes>
 
-        <Route path="/cart" element={ <Cart /> } >
-          <Route path="detail" element={<div>Cart Detail</div>} />
-        </Route>
-
-      </Routes>
+      </body>
 
       <Footer className='footer' />
+      
 
     </div>
     
@@ -130,7 +132,14 @@ const Footer = () => {
   return(
     <div>
       <footer className='footer'>
-        
+        <div className='footer-left'>
+          <p>ShoseMall</p>
+          <span>개인정보처리방침</span>
+        </div>
+        <div className='footer-center'>
+          <p>경기도 부천시 원미구 </p>
+          <p>대표: 010-5122-4519</p>
+        </div>
       </footer>
     </div>
   )
