@@ -9,6 +9,7 @@ import axios from 'axios';
 import { useQuery } from 'react-query';
 
 import productData from './Test-Data.js';
+import Product from './routes/Product.js';
 import Detail from './routes/Detail.js';
 import Cart from './routes/Cart.js';
 import Event from './routes/Event.js';
@@ -36,6 +37,7 @@ function App() {
               <div className="main-bg"></div>
               <Container>
                 <Row>
+                  <p className='main-product'>Best Product</p>
                   {
                     shoes.map((a, i)=> {
                       return( <Card shoes={shoes[i]} i={i} key={i}/> )
@@ -50,7 +52,11 @@ function App() {
             </div>
           } />
 
-          <Route  path="/shoes/:id" element={ 
+          <Route path="/product" element={
+            <Product />
+          } />
+
+          <Route  path="/product/:id" element={ 
               <Detail shoes={ shoes }/> 
           } />
           {/* Nested route 
@@ -103,6 +109,7 @@ const Navigation = () => {
         <Container>
           <Navbar.Brand href="/">ShoseMall</Navbar.Brand>
           <Nav className="me-auto nav-menu">
+          <Nav.Link onClick={()=>{ navigate('/product') }}>Product</Nav.Link>
             <Nav.Link onClick={()=>{ navigate('/cart') }}>Cart</Nav.Link>
             <Nav.Link onClick={()=> { navigate('/event') }}>Event</Nav.Link>
           </Nav>
@@ -118,7 +125,7 @@ const Navigation = () => {
 const Card = (props) => {
   return(
     <Col sm={4}>
-      <Link to={`/shoes/${props.shoes.id}`}>
+      <Link to={`/product/${props.shoes.id}`}>
         <img src={ "https://codingapple1.github.io/shop/shoes"+(props.i+1)+".jpg" } width="100%" />
       </Link>
       <h4>{ props.shoes.title }</h4>
@@ -135,10 +142,12 @@ const Footer = () => {
         <div className='footer-left'>
           <p>ShoseMall</p>
           <span>개인정보처리방침</span>
+          <span>이용약관</span>
+          <p></p>
         </div>
-        <div className='footer-center'>
-          <p>경기도 부천시 원미구 </p>
-          <p>대표: 010-5122-4519</p>
+        <div className='footer-center ft-s'>
+          <p>(주)ShoseMall | 대표: 노시온 | 사업자번호: 100-10-10000</p>
+          <p>Phone: 010-5122-4519 | 주소: 경기도 부천시 소사구 심곡로</p>
         </div>
       </footer>
     </div>
