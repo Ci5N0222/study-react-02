@@ -44,7 +44,22 @@ function App() {
               <div className="main-bg"></div>
               <Container>
                 <Row>
-                  <p className='main-product'>Best Product</p>
+                  <p className='main-product'>Best Product!!</p>
+                  {
+                    shoes.map((a, i)=> {
+                      return( <Card shoes={shoes[i]} i={i} key={i}/> )
+                    })
+                  }
+                </Row>
+              </Container>
+              {
+              // 더보기 버튼
+                count < 4 ? <PlusButton shoes={shoes} setShoes={setShoes} count={count} setCount={setCount}/> : null
+              }
+              
+              <Container>
+                <Row>
+                  <p className='main-product'>Recommended Products!</p>
                   {
                     shoes.map((a, i)=> {
                       return( <Card shoes={shoes[i]} i={i} key={i}/> )
