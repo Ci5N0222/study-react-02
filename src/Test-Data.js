@@ -4,7 +4,8 @@ const productData = [
       title : "White and Black",
       content : "Born in France",
       img : "https://codingapple1.github.io/shop/shoes1.jpg",
-      price : 120000
+      price: 120000,
+      class: "men"
     },
   
     {
@@ -12,7 +13,8 @@ const productData = [
       title : "Red Knit",
       content : "Born in Seoul",
       img : "https://codingapple1.github.io/shop/shoes2.jpg",
-      price : 110000
+      price : 110000,
+      class: "women"
     },
   
     {
@@ -20,7 +22,29 @@ const productData = [
       title : "Grey Yordan",
       content : "Born in the States",
       img : "https://codingapple1.github.io/shop/shoes3.jpg",
-      price : 130000
+      price : 130000,
+      class: "men"
+    },
+    {
+      id: 3,
+      title: "Flowey",
+      img: "https://codingapple1.github.io/shop/shoes3.jpg",
+      price : 120000,
+      class: "men"
+    },
+    {
+      id: 4,
+      title: "Baby shoes",
+      img: "https://codingapple1.github.io/shop/shoes4.jpg",
+      price: 120000,
+      class: "women"
+    },
+    {
+      id: 5,
+      title: "Red Herring",
+      img: "https://codingapple1.github.io/shop/shoes5.jpg",
+      price: 200000,
+      class: "women"
     }
 ]
 

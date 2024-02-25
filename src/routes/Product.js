@@ -53,29 +53,8 @@ const Product = (props) => {
             </Container>
         </div>
 
-
     )
    
-}
-
-
-
-const bestProductFunc = (state) => {
-
-    let array = [];
-
-    switch(state) {
-        case 'All' :
-            // 모든 상품
-            break;
-        case 'Best' :
-            for (const id of bestProduct) {
-                array.push(id.productId)
-            }
-            break;
-    }
-
-    return array;
 }
 
 
