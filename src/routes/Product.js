@@ -11,7 +11,7 @@ const Product = (props) => {
 
     let [shoes, setShoes] = useState(productData);
     let [status, setStatus] = useState('All');
-    let [productStatus, setProductStatus] = useState();
+    let [productStatus, setProductStatus] = useState('All');
 
 
     return(
@@ -20,7 +20,6 @@ const Product = (props) => {
                 <Nav.Item>
                     <Nav.Link onClick={()=>{
                         setStatus('All');
-                        setProductStatus(bestProduct);
                     }}>All</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
@@ -43,9 +42,6 @@ const Product = (props) => {
                 <p><h2>{ status } Product!</h2></p>
                 <Row>
                     {
-                        productStatus
-                    }
-                    {
                         shoes.map((a, i)=> {
                             console.log("a === ", JSON.stringify(a));
                             return( 
@@ -62,11 +58,23 @@ const Product = (props) => {
    
 }
 
+
+
 const bestProductFunc = (state) => {
-    let array;
-    for (const id of state) {
-        array.push(id.productId);    
+
+    let array = [];
+
+    switch(state) {
+        case 'All' :
+            // 모든 상품
+            break;
+        case 'Best' :
+            for (const id of bestProduct) {
+                array.push(id.productId)
+            }
+            break;
     }
+
     return array;
 }
 
