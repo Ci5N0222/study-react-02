@@ -24,4 +24,15 @@ const productData = [
     }
 ]
 
-export default productData;
+const bestProduct = [
+  {
+    id: 0,
+    productId: 0
+  },
+  {
+    id: 1,
+    productId: 2
+  }
+]
+
+export { productData, bestProduct };

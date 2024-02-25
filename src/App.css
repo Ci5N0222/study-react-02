@@ -114,3 +114,8 @@
     transform: rotate(360deg);
   }
 }
+
+.justify-content-center {
+  margin: 10px;
+  padding: 10px;
+}

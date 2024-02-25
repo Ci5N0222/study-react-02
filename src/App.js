@@ -20,7 +20,7 @@ import Navigation from './component/Navigation.js';
 import Footer from './component/Footer.js';
 
 // data
-import productData from './Test-Data.js';
+import { productData } from './Test-Data.js';
 
 function App() {
 
