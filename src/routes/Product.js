@@ -13,7 +13,6 @@ const Product = (props) => {
     let [status, setStatus] = useState('All');
 
     useEffect(()=>{
-
     }, []);
 
     return(
@@ -44,8 +43,10 @@ const Product = (props) => {
                 <p><h2>{ status } Product!</h2></p>
                 <Row>
                     {
+                        productStatus({status, shoes, setShoes})
+                    }
+                    {
                         shoes.map((a, i)=> {
-                            console.log("a === ", JSON.stringify(a));
                             return( 
                                 <Card shoes={shoes[i]} i={i} key={i}/> 
                             )
@@ -60,20 +61,17 @@ const Product = (props) => {
 
 const productStatus = ({status, shoes, setShoes}) => {
 
+    let copy = [];
     let arr = [];
 
     switch(status){
-        case 'men':
+        case 'Men':
+        case 'Women' :
             copy = [...shoes];
             for (const id of copy) {
-                if(id.class == status) arr.push(id)
-            }
-            setShoes(arr);
-            break;
-        case 'women':
-            copy = [...shoes];
-            for (const id of copy) {
-                if(id.class == status) arr.push(id)
+                if(id.class == status){
+                    arr.push(id)
+                }
             }
             setShoes(arr);
             break;
