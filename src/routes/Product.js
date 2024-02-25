@@ -11,8 +11,10 @@ const Product = (props) => {
 
     let [shoes, setShoes] = useState(productData);
     let [status, setStatus] = useState('All');
-    let [productStatus, setProductStatus] = useState('All');
 
+    useEffect(()=>{
+
+    }, []);
 
     return(
         <div>
@@ -54,7 +56,31 @@ const Product = (props) => {
         </div>
 
     )
-   
+}
+
+const productStatus = ({status, shoes, setShoes}) => {
+
+    let arr = [];
+
+    switch(status){
+        case 'men':
+            copy = [...shoes];
+            for (const id of copy) {
+                if(id.class == status) arr.push(id)
+            }
+            setShoes(arr);
+            break;
+        case 'women':
+            copy = [...shoes];
+            for (const id of copy) {
+                if(id.class == status) arr.push(id)
+            }
+            setShoes(arr);
+            break;
+        default :
+            break;
+    }
+
 }
 
 
