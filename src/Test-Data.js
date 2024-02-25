@@ -29,7 +29,7 @@ const productData = [
       id: 3,
       title: "Flowey",
       content: "Born in Japen",
-      img: "https://codingapple1.github.io/shop/shoes3.jpg",
+      img: "https://codingapple1.github.io/shop/shoes4.jpg",
       price : 120000,
       class: "Men"
     },
@@ -37,7 +37,7 @@ const productData = [
       id: 4,
       title: "Baby shoes",
       content: "Born in China",
-      img: "https://codingapple1.github.io/shop/shoes4.jpg",
+      img: "https://codingapple1.github.io/shop/shoes5.jpg",
       price: 120000,
       class: "Women"
     },
@@ -45,7 +45,7 @@ const productData = [
       id: 5,
       title: "Red Herring",
       content: "Born in Italy",
-      img: "https://codingapple1.github.io/shop/shoes5.jpg",
+      img: "https://codingapple1.github.io/shop/shoes6.jpg",
       price: 200000,
       class: "Women"
     }
