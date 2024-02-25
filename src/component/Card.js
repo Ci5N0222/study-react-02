@@ -2,6 +2,7 @@ import { Col } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
 const Card = (props) => {
+  
     return(
       <Col sm={4}>
         <Link to={`/product/${props.shoes.id}`}>

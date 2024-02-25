@@ -1,10 +1,15 @@
 /* eslint-disable */
 
 import React, { useContext, useEffect, useState } from "react";
-import {Nav} from 'react-bootstrap';
+import {Nav, Container, Row} from 'react-bootstrap';
+import Card from './../component/Card';
 
+// data
+import productData from './../Test-Data.js';
 
 const Product = (props) => {
+
+    let [shoes, setShoes] = useState(productData);
 
     return(
         <div>
@@ -19,6 +24,15 @@ const Product = (props) => {
                     <Nav.Link eventKey="link-2">Women</Nav.Link>
                 </Nav.Item>
             </Nav>
+            <Container>
+                <Row>
+                  {
+                    shoes.map((a, i)=> {
+                      return( <Card shoes={shoes[i]} i={i} key={i}/> )
+                    })
+                  }
+                </Row>
+            </Container>
         </div>
 
 
